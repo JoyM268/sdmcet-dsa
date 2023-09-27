@@ -1,3 +1,4 @@
+//Program to perform push, pop, display operations on stack using structures and pointers
 #include<stdio.h>
 #include<stdlib.h>
 #define SIZE 5

@@ -1,3 +1,4 @@
+//Write a C program to covert infix to postix using stack as the data structure
 #include<stdio.h>
 #include<ctype.h>
 #define SIZE 20

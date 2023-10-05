@@ -1,4 +1,4 @@
-//Program to implement chaining usinng linked list
+//Program to implement chaining using linked list
 #include<stdio.h>
 #include<stdlib.h>
 #define SIZE 10

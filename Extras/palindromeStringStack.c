@@ -50,12 +50,12 @@ int pop()
 int isPalindrome(char *str)
 {
     int len = strlen(str), i;
-    for(i = 0; i < len; i++)
+    for(i = 0; i < len/2; i++)
     {
         push(str[i]);
     }
-    i = 0;
-    while(s.top != -1)
+    if(len % 2) i++;
+    while(str[i])
     {
         if(str[i] != pop())
         {

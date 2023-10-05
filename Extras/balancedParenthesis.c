@@ -25,14 +25,13 @@ int checkPair(char a, char b)
 
 int isBalanced(char *str)
 {
-    int len = strlen(str), openCount = 0, closeCount = 0;
+    int len = strlen(str);
     char temp;
     for(int i = 0; i < len; i++)
     {
         if(str[i] == '{' || str[i] == '[' || str[i] == '(')
         {
             push(str[i]);
-            openCount++;
         }
         else if(str[i] == '}' || str[i] == ']' || str[i] == ')')
         {
@@ -42,10 +41,9 @@ int isBalanced(char *str)
             {
                 return 0;
             }
-            closeCount++;
         }
     }
-    if(s.top != -1 || (openCount != closeCount))
+    if(s.top != -1)
     {
         return 0;
     }

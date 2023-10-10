@@ -1,4 +1,4 @@
-//Write a C program to evaluate a given valid prefix expression using stack implementation
+//Write a C program to evaluate a given valid postfix expression using stack implementation
 #include<stdio.h>
 #include<ctype.h>
 #include<math.h>

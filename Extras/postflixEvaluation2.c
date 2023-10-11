@@ -1,8 +1,9 @@
-//Program to evaluate postfix expression
+//Program to evaluate postfix expression (multi digit numbers)
 #include<stdio.h>
 #include<ctype.h>
 #include<math.h>
-#define SIZE 20
+#include<string.h>
+#define SIZE 1000
 
 struct stack{
     int stk[SIZE];
@@ -36,15 +37,24 @@ main()
     struct stack s;
     s.top = -1;
     char postfix[SIZE], ch;
-    int i = 0, res, num1, num2;
+    int i = 0, res, num1, num2, num, len;
     printf("Enter a valid postfix expression: ");
-    scanf("%s", postfix);
-    while(postfix[i])
+    scanf("%[^\n]", postfix);
+    len = strlen(postfix);
+    for(i = 0; i < len; i++)
     {
         ch = postfix[i];
-        if(isdigit(ch))
+        if(ch == ' ') continue;
+        else if(isdigit(ch))
         {
-            push(&s, ch - '0');
+            num = 0;
+            while(isdigit(postfix[i]))
+            {
+                num = num * 10 + (postfix[i] - '0');
+                i++;
+            }
+            push(&s, num);
+            i--;
         }
         else
         {
@@ -53,7 +63,6 @@ main()
             res = evaluate(num1, ch, num2);
             push(&s, res);
         }
-        i++;
     }
     printf("The result of the evaluated postfix expression is: %d\n", pop(&s));
 }

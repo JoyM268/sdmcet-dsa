@@ -1,4 +1,4 @@
-//Write a C program to find nth element of fibonacci series
+//Write a C program to find nth element of fibonacci series recursively
 #include<stdio.h>
 
 int fibonacci(int n)

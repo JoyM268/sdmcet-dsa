@@ -36,7 +36,7 @@ int main()
     char ch, postfix[SIZE];
     struct stack s;
     s.top = -1;
-    printf("Enter valid infix expression: ");
+    printf("Enter valid postfix expression: ");
     scanf("%s", postfix);
     while(postfix[i] != '\0')
     {

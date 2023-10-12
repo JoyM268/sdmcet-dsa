@@ -46,7 +46,7 @@ void Qdisplay()
 
 main()
 {
-    f = 0, r = -1;
+    f = 0; r = -1;
     for(;;)
     {
         printf("\n1:QInsert@Rear\t2:QDelete@Front\t3:QDisplay\t4:QExit\n");

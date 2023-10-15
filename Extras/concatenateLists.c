@@ -12,6 +12,7 @@ node *createNode(int data)
     node *temp = (node *)malloc(sizeof(node));
     temp -> data = data;
     temp -> next = NULL;
+    return root;
 }
 
 node *insertAtEnd(node *head, int data)

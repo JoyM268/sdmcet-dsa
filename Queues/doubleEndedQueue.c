@@ -1,4 +1,4 @@
-//Program to implement double ended queue
+//Write a C program to implement double ended queue using circular array
 #include<stdio.h>
 #include<stdlib.h>
 #define N 5

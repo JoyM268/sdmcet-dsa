@@ -4,7 +4,8 @@
 #include<stdlib.h>
 #define MAX 30
 
-int top = -1, stack[MAX];
+int top = -1;
+char stack[MAX];
 void push(char);
 char pop();
 int match(char a, char b);

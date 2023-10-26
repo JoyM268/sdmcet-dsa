@@ -5,12 +5,13 @@
 #define SIZE 50
 
 struct stack{
-    int stk[SIZE], top;
+    char stk[SIZE];
+    int top;
 };
 
-void push(struct stack *s, char item)
+void push(struct stack *s, char ele)
 {
-    s -> stk[++(s -> top)] = item;
+    s -> stk[++(s -> top)] = ele;
 }
 
 char pop(struct stack *s)

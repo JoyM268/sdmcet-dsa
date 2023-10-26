@@ -9,13 +9,6 @@ typedef struct node{
 } node;
 
 node *chain[SIZE];
-void makeNULL()
-{
-    for(int i = 0; i < SIZE; i++)
-    {
-        chain[i] = NULL;
-    }
-} 
 
 node *createNode(int item)
 {

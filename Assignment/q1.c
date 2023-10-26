@@ -9,9 +9,9 @@ struct stack{
     int top;
 };
 
-void push(struct stack *s, char item)
+void push(struct stack *s, char ele)
 {
-    s -> stk[++(s -> top)] = item;
+    s -> stk[++(s -> top)] = ele;
 }
 
 char pop(struct stack *s)

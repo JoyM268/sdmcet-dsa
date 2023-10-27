@@ -1,6 +1,6 @@
 /* Write a C program to implement  descending priority queue. 
-Note:  An  descending  priority  queue  is  a  collection  of  elements  where  an  element  is 
-inserted such that the largest value element is always at the front of the queue. */
+Note:  An  descending  priority  queue  is  a  collection  of  elements  where  an  element  is inserted such that the largest value element is 
+always at the front of the queue. */
 #include<stdio.h>
 #include<stdlib.h>
 #define Qsize 5

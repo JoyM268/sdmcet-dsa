@@ -63,7 +63,7 @@ void delete()
         return;
     }
     printf("Element %d deleted from queue\n", item);
-    if(isEmpty(q3))
+    if(isEmpty(q1) && isEmpty(q2) && isEmpty(q3))
     {
         q1.front = q2.front = q3.front = 0;
         q1.rear = q2.rear = q3.rear = -1;       

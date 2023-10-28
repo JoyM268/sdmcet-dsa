@@ -32,7 +32,7 @@ int main()
     for(i = 0; i < len; i++)
     {
         sprintf(temp, "%c", postfix[i]);
-        if(isalnum(postfix[i]))
+        if(isalpha(postfix[i]) || isdigit(postfix[i]))
         {
             push(&s, temp);
         }

@@ -1,29 +1,30 @@
-// Write a C program to convert a valid parenthesized infix expression to prefix expression. (Expression includes operators +, -, * and /)
+//Program to convert infix to prefix expression
 #include<stdio.h>
-#include<string.h>
 #include<ctype.h>
-#define SIZE 50
+#include<math.h>
+#include<string.h>
+#define SIZE 100
 
 struct stack{
     char stk[SIZE];
     int top;
 };
 
-void push(struct stack *s, char ele)
+void push(struct stack *s, char item)
 {
-    s -> stk[++(s -> top)] = ele;
+    s -> stk[++(s -> top)] = item;
 }
 
-char pop(struct stack *s)
+int pop(struct stack *s)
 {
-    return (s -> stk[(s -> top)--]);
+    return (s -> stk[s -> top--]);
 }
 
 int precedence(char operator)
 {
     switch(operator)
     {
-        case ')': return 1;
+        case '(': return 1;
         case '+':
         case '-': return 2;
         case '*':
@@ -48,31 +49,48 @@ void reverse(char *str)
     }
 }
 
+void changeParenthesis(char *str)
+{
+    int i, len = strlen(str);
+    for(i = 0; i < len; i++)
+    {
+        if(str[i] == '(')
+        {
+            str[i] = ')';
+        }
+        else if(str[i] == ')')
+        {
+            str[i] = '(';
+        }
+    }
+}
+
 int main()
 {
     struct stack s;
     s.top = -1;
-    char infix[SIZE], prefix[SIZE], ch, c;
-    int i, j = 0, len;
+    int i = 0, j = 0;
+    char infix[SIZE], prefix[SIZE], ch;
     printf("Enter a valid infix expression: ");
     scanf("%s", infix);
-    len = strlen(infix);
-    for(i = len - 1; i >= 0; i--)
+    reverse(infix);
+    changeParenthesis(infix);
+    while(infix[i])
     {
-        ch = infix[i];
-        if(ch == ')')
+        ch = infix[i++];
+        if(ch == '(')
         {
             push(&s, ch);
         }
-        else if(isdigit(ch) || isalpha(ch))
+        else if(isalnum(ch))
         {
             prefix[j++] = ch;
         }
-        else if(ch == '(')
+        else if(ch == ')')
         {
-            while((c  = pop(&s)) != ')')
+            while((ch = pop(&s)) != '(')
             {
-                prefix[j++] = c;
+                prefix[j++] = ch;
             }
         }
         else
@@ -90,6 +108,6 @@ int main()
     }
     prefix[j] = '\0';
     reverse(prefix);
-    printf("The prefix of infix expresion %s is %s\n", infix, prefix);
+    printf("The prefix expression is: %s\n", prefix);
     return 0;
 }

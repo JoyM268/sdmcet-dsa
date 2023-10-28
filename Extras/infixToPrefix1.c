@@ -1,4 +1,5 @@
 //Program to convert infix to prefix expression
+//Method 1
 #include<stdio.h>
 #include<ctype.h>
 #include<string.h>

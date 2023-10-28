@@ -70,7 +70,7 @@ int main()
     struct stack s;
     s.top = -1;
     int i = 0, j = 0;
-    char infix[SIZE], prefix[SIZE], ch;
+    char infix[SIZE], prefix[SIZE], ch, c;
     printf("Enter a valid infix expression: ");
     scanf("%s", infix);
     reverse(infix);
@@ -88,9 +88,9 @@ int main()
         }
         else if(ch == ')')
         {
-            while((ch = pop(&s)) != '(')
+            while((c = pop(&s)) != '(')
             {
-                prefix[j++] = ch;
+                prefix[j++] = c;
             }
         }
         else

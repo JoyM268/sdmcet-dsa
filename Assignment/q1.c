@@ -82,7 +82,7 @@ int main()
         {
             push(&s, ch);
         }
-        else if(isalnum(ch))
+        else if(isalpha(ch) || isdigit(ch))
         {
             prefix[j++] = ch;
         }

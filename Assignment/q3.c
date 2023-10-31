@@ -1,4 +1,56 @@
 //Write a C program to convert a given postfix expression to infix expression. (Expression includes operators +, -, * and /)
+//Method 1
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define SIZE 50
+
+char stack[SIZE][SIZE];
+int top = -1;
+
+void push(char item[])
+{
+    strcpy(stack[++top], item);
+}
+
+void pop(char item[])
+{
+    strcpy(item, stack[top--]);
+}
+
+int main()
+{
+    int i = 0;
+    char postfix[SIZE], left[SIZE], right[SIZE], result[SIZE], item[2], ch;
+    printf("Enter a valid postfix expression: ");
+    scanf("%s", postfix);
+    while(postfix[i] != '\0')
+    {
+        ch = postfix[i++];
+        item[0] = ch, item[1] = '\0';
+        if(isalpha(ch) || isdigit(ch))
+        {
+            push(item);
+        }
+        else
+        {
+            pop(right);
+            pop(left);
+            strcpy(result, "(");
+            strcat(result, left);
+            strcat(result, item);
+            strcat(result, right);
+            strcat(result, ")");
+            push(result);
+        }
+    }
+    pop(result);
+    printf("The infix of postfix expression %s is %s\n", postfix, result);
+    return 0;
+}
+
+//Method 2 (Using sprintf())
+/*
 #include<stdio.h>
 #include<string.h>
 #include<ctype.h>
@@ -47,3 +99,4 @@ int main()
     printf("The infix of postfix expression %s is %s\n", postfix, pop(&s));
     return 0;
 }
+*/

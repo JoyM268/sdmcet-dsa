@@ -67,13 +67,66 @@ void display_sll(NODE first)
     }
 }
 
+//Write a C module to delete the node from the front end
+NODE delete_front_sll(NODE first)
+{
+    if(first == NULL)
+    {
+        printf("No elements in the list to delete\n");
+        return NULL;
+    }
+    else if(first -> link == NULL)
+    {
+        printf("Deleted element is %d\n", first -> info);
+        free(first);
+        return NULL;
+    }
+    else
+    {
+        NODE cur = first;
+        first = first -> link;
+        printf("Deleted element is %d\n", cur -> info);
+        free(cur);
+        return first;
+    }
+}
+
+//Write a C module to delete the node from the rear end
+NODE delete_rear_sll(NODE first)
+{
+    if(first == NULL)
+    {
+        printf("No elements in the list to delete\n");
+        return NULL;
+    }
+    else if(first -> link == NULL)
+    {
+        printf("Deleted element is %d\n", first -> info);
+        free(first);
+        return NULL;
+    }
+    else
+    {
+        NODE prev = NULL, cur = first;
+        while(cur -> link != NULL)
+        {
+            prev = cur;
+            cur = cur -> link;
+        }        
+        printf("Deleted element is %d\n", cur -> info);
+        free(cur);
+        prev -> link = NULL;
+        return first;
+    }
+}
+
 int main()
 {
     NODE first = NULL;
     int choice, ele;
     for(;;)
     {
-        printf("\n1.Insert front\t2.Insert rear\t3.Display\t4.Exit\n");
+        printf("\n1.Insert front\t2.Insert rear\t3.Display\t4.Delete front\t5.Delete rear\t6.Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch(choice)
@@ -92,6 +145,12 @@ int main()
                 display_sll(first);
                 break;
             case 4:
+                first = delete_front_sll(first);
+                break;
+            case 5:
+                first = delete_rear_sll(first);
+                break;
+            case 6:
                 exit(0);
             default:
                 printf("Invalid choice\n");

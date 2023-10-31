@@ -45,6 +45,11 @@ int main()
         }
     }
     pop(result);
+    if(top != -1)
+    {
+        printf("Invalid expression\n");
+        return 0;
+    }
     printf("The infix of postfix expression %s is %s\n", postfix, result);
     return 0;
 }

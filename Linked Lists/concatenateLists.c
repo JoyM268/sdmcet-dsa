@@ -15,28 +15,16 @@ NODE createNode()
     return ptr;
 }
 
-NODE insertRearSLL(NODE first, int item)
+NODE insertFront(NODE first, int ele)
 {
     NODE temp = createNode();
-    temp -> info = item;
-    temp -> link = NULL;
-    if(first == NULL)
-    {
-        return temp;
-    }
-    else
-    {
-        NODE cur = first;
-        while(cur -> link != NULL)
-        {
-            cur = cur -> link;
-        }
-        cur -> link = temp;
-        return first;
-    }
+    temp -> info = ele;
+    printf("Info = %d\n", temp -> info);
+    temp -> link = first;
+    return temp;
 }
 
-void displaySLL(NODE first)
+void display(NODE first)
 {
     if(first == NULL)
     {
@@ -55,25 +43,23 @@ void displaySLL(NODE first)
     }
 }
 
-NODE concatenateList(NODE first, NODE second)
+NODE concatenate(NODE first, NODE second)
 {
+    NODE cur;
     if(first == NULL)
     {
         return second;
     }
-    else if(second == NULL)
+    if(second == NULL)
     {
         return first;
     }
-    else
+    cur = first;
+    while(cur -> link != NULL)
     {
-        NODE temp = first;
-        while(temp -> link != NULL)
-        {
-            temp = temp -> link;
-        }
-        temp -> link = second;
+        cur = cur -> link;
     }
+    cur -> link = second;
     return first;
 }
 
@@ -91,22 +77,21 @@ int main()
         case 1:
             printf("Enter the element to be inserted: ");
             scanf("%d", &item);
-            first = insertRearSLL(first, item);
+            first = insertFront(first, item);
             break;
         case 2:
             printf("Enter the element to be inserted: ");
             scanf("%d", &item);
-            second = insertRearSLL(second, item);
+            second = insertFront(second, item);
             break;
         case 3:
-            displaySLL(first);
+            display(first);
             break;
         case 4:
-            displaySLL(second);
+            display(second);
             break;
         case 5:
-            first = concatenateList(first, second);
-            second = NULL;
+            first = concatenate(first, second);
             printf("List first and second concatenated\n");
             break;
         case 6:

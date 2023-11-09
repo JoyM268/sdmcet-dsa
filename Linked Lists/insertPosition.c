@@ -35,8 +35,11 @@ NODE insertPositionSLL(NODE first, int pos, int ele)
     }
     if(count == pos)
     {
-        prev -> link = temp;
         temp -> link = cur;
+        if(cur == first)
+            first = temp;
+        else
+            prev -> link = temp;
         return first;
     }
     if(cur == NULL && pos != count)

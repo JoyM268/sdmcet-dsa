@@ -50,7 +50,7 @@ node *pairwiseSwap(node *head)
     node *dummy = createNode(0);
     dummy -> next = head;
     node *prev = dummy, *curr = head;
-    while (curr != NULL && curr->next != NULL)
+    while (curr != NULL && curr -> next != NULL)
     {
         prev -> next = curr -> next;
         curr -> next = curr -> next -> next;

@@ -1,5 +1,4 @@
 //Write a C program to search and delete a element from linked list
-//Write a C program to find the length of the linked list
 #include<stdio.h>
 #include<stdlib.h>
 

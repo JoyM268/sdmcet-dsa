@@ -22,6 +22,7 @@ NODE insertFrontDLL(NODE first, int ele)
     temp -> info = ele;
     temp -> right = NULL;
     temp -> left = NULL;
+    printf("%d\n", temp -> info);
     if(first == NULL)
     {
         return temp;

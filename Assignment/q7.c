@@ -38,44 +38,32 @@ NODE addPolynomial(NODE A, NODE B)
 {
     if(A == NULL) return B;
     if(B == NULL) return A;
-    NODE dummy = createTerm(0, 0), prev = dummy;
-    while(A != NULL && B != NULL)
+    NODE C;
+    if(A -> exp == B -> exp)
     {
-        if(A -> exp > B -> exp)
-        {
-            prev -> link = A;
-            prev = A;
-            A = A -> link;
-        }
-        else if(A -> exp < B -> exp)
-        {
-            prev -> link = B;
-            prev = B;
-            B = B -> link;
-        }
-        else
-        {
-            A -> coeff += B -> coeff;
-            prev -> link = A;
-            prev = A;
-            A = A -> link;
-            B = B -> link;
-        }
+        C = createTerm(A -> coeff + B -> coeff, A -> exp);
+        C -> link = addPolynomial(A -> link, B -> link);
     }
-    if(A != NULL)
+    else if(A -> exp > B -> exp)
     {
-        prev -> link = A;
+        C = createTerm(A -> coeff, A -> exp);
+        C -> link = addPolynomial(A -> link, B);
     }
-    if(B != NULL)
+    else
     {
-        prev -> link = B;
+        C = createTerm(B -> coeff, B -> exp);
+        C -> link = addPolynomial(A, B -> link);    
     }
-    return dummy -> link;
+    return C;
 }
 
 void displayPolynomial(NODE first)
 {
-    if(first == NULL) return;
+    if(first == NULL) 
+    {
+        printf("Polynomial is empty\n");
+        return;
+    }
     while(first -> link != NULL)
     {
         printf("%dx^%d + ", first -> coeff, first -> exp);
@@ -126,3 +114,46 @@ int main()
     }
     return 0;
 }
+
+
+//Method 2
+/*
+NODE addPolynomial(NODE A, NODE B)
+{
+    if(A == NULL) return B;
+    if(B == NULL) return A;
+    NODE dummy = createTerm(0, 0), prev = dummy;
+    while(A != NULL && B != NULL)
+    {
+        if(A -> exp > B -> exp)
+        {
+            prev -> link = A;
+            prev = A;
+            A = A -> link;
+        }
+        else if(A -> exp < B -> exp)
+        {
+            prev -> link = B;
+            prev = B;
+            B = B -> link;
+        }
+        else
+        {
+            A -> coeff += B -> coeff;
+            prev -> link = A;
+            prev = A;
+            A = A -> link;
+            B = B -> link;
+        }
+    }
+    if(A != NULL)
+    {
+        prev -> link = A;
+    }
+    if(B != NULL)
+    {
+        prev -> link = B;
+    }
+    return dummy -> link;
+}
+*/

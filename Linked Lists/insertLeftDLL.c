@@ -21,7 +21,7 @@ NODE insertLeft(NODE first, int item)
     int ele;
     if(first == NULL)
     {
-        printf("List is empty");
+        printf("List is empty\n");
         return first;
     }
     cur = first;

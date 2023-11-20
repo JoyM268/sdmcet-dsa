@@ -104,13 +104,34 @@ NODE deleteFrontDLL(NODE first)
     }
 }
 
+NODE deleteRearDLL(NODE first)
+{
+    if(first == NULL)
+    {
+        printf("List is empty\n");
+        return first;
+    }
+    NODE cur = first;
+    while(cur -> right != NULL)
+    {
+        cur = cur -> right;
+    }
+    if(first == cur)
+        first = NULL;
+    else
+        cur -> left -> right = NULL;
+    printf("%d deleted from the list\n", cur -> info);
+    free(cur);
+    return first;
+}
+
 int main()
 {
     NODE first = NULL;
     int choice, ele;
     for(;;)
     {
-        printf("\n1.Insert front\t2.Insert rear\t3.Display\t4.Delete front\t5.Exit\n");
+        printf("\n1.Insert front\t2.Insert rear\t3.Display\t4.Delete front\t5.Delete rear\t6.Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch(choice)
@@ -132,6 +153,9 @@ int main()
                 first = deleteFrontDLL(first);
                 break;
             case 5:
+                first = deleteRearDLL(first);
+                break;
+            case 6:
                 exit(0);
             default:
                 printf("Invalid choice\n");

@@ -52,24 +52,17 @@ NODE createPolynomial(NODE first)
 NODE multiplyPolynomial(NODE A, NODE B)
 {
     if(A == NULL || B == NULL) return NULL;
-    NODE C = (NODE)malloc(sizeof(struct node)), cur = C;
+    NODE C = NULL;
     while(A != NULL)
     {
         NODE temp = B;
         while(temp != NULL)
         {
-            cur -> coeff = A -> coeff * temp -> coeff;
-            cur -> exp = A -> exp + temp -> exp;
-            if(temp -> link != NULL || A -> link != NULL)
-            {
-                cur -> link = (NODE)malloc(sizeof(struct node));
-                cur = cur -> link;
-            }
+            C = insertTerm(C, A -> coeff * temp -> coeff, A -> exp + temp -> exp);
             temp = temp -> link;
         }
         A = A -> link;
     }
-    cur -> link = NULL;
     return C;
 }
 

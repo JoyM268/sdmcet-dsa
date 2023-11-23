@@ -9,50 +9,79 @@ struct node{
 };
 typedef struct node *NODE;
 
-NODE createTerm(int coeff, int exp)
+NODE createNode(int coefficient, int exponent)
 {
     NODE temp = (NODE)malloc(sizeof(struct node));
-    temp -> link = NULL;
-    temp -> coeff = coeff;
-    temp -> exp = exp;
+    temp -> coeff = coefficient;
+    temp -> exp = exponent;
+    temp -> link = NULL; 
     return temp;
 }
 
-NODE insertTerm(NODE first, int coeff, int exp)
+NODE insertTerm(NODE first, int coefficient, int exponent)
 {
-    NODE temp = createTerm(coeff, exp); 
-    if(first == NULL)
-    {
+    NODE temp = createNode(coefficient, exponent);
+    if(first == NULL || first -> exp < exponent)
+    {   temp -> link = first;
         return temp;
     }
     NODE cur = first;
-    while(cur -> link != NULL)
+    while(cur -> link != NULL && cur -> link -> exp > exponent)
     {
         cur = cur -> link;
     }
+    temp -> link = cur -> link;
     cur -> link = temp;
+    return first;
+}
+
+NODE createPolynomial(NODE first)
+{
+    int n, i, exponent, coefficient;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    for(i = 0; i < n; i++)
+    {
+        printf("\nEnter the coefficient and exponent of the term %d: ", i + 1);
+        scanf("%d %d", &coefficient, &exponent);
+        first = insertTerm(first, coefficient, exponent);
+    }
     return first;
 }
 
 NODE addPolynomial(NODE A, NODE B)
 {
+    NODE C = NULL;
     if(A == NULL) return B;
     if(B == NULL) return A;
-    NODE C;
-    if(A -> exp == B -> exp)
+    while(A != NULL && B != NULL)
     {
-        C = createTerm(A -> coeff + B -> coeff, A -> exp);
-        C -> link = addPolynomial(A -> link, B -> link);
+        if(A -> exp > B -> exp)
+        {
+            C = insertTerm(C, A -> coeff, A -> exp);
+            A = A -> link;
+        }
+        else if(A -> exp < B -> exp)
+        {
+            C = insertTerm(C, B -> coeff, B -> exp);
+            B = B -> link;
+        }
+        else
+        {
+            C = insertTerm(C, A -> coeff + B -> coeff, A -> exp);
+            A = A -> link;
+            B = B -> link;
+        }
     }
-    else if(A -> exp > B -> exp)
+    while(A != NULL)
     {
-        C = createTerm(A -> coeff, A -> exp);
-        C -> link = addPolynomial(A -> link, B);
+        C = insertTerm(C, A -> coeff, A -> exp);
+        A = A -> link;
     }
-    else
+    while(B != NULL)
     {
-        C = createTerm(B -> coeff, B -> exp);
-        C -> link = addPolynomial(A, B -> link);    
+        C = insertTerm(C, B -> coeff, B -> exp);
+        B = B -> link;
     }
     return C;
 }
@@ -61,7 +90,7 @@ void displayPolynomial(NODE first)
 {
     if(first == NULL) 
     {
-        printf("Polynomial is empty\n");
+        printf("0\n");
         return;
     }
     while(first -> link != NULL)
@@ -78,20 +107,16 @@ int main()
     int choice, coefficient, exponent;
     for(;;)
     {
-        printf("\n1.Insert term in A\t2.Insert term in B\t3.Display A\t4.Display B\t5.Add Polynomials\t6.Exit\n");
+        printf("\n1.Create polynomial A\t2.Create polynomial B\t3.Display A\t4.Display B\t5.Add Polynomials\t6.Exit\n");
         printf("Enter the choice: ");
         scanf("%d", &choice);
         switch(choice)
         {
             case 1:
-                printf("Enter the coefficient and exponent of the term: ");
-                scanf("%d %d", &coefficient, &exponent);
-                A = insertTerm(A, coefficient, exponent);
+                A = createPolynomial(A);
                 break;
             case 2:
-                printf("Enter the coefficient and exponent of the term: ");
-                scanf("%d %d", &coefficient, &exponent);
-                B = insertTerm(B, coefficient, exponent);
+                B = createPolynomial(B);
                 break;
             case 3:
                 printf("A = ");
@@ -115,45 +140,28 @@ int main()
     return 0;
 }
 
-
 //Method 2
 /*
 NODE addPolynomial(NODE A, NODE B)
 {
     if(A == NULL) return B;
     if(B == NULL) return A;
-    NODE dummy = createTerm(0, 0), prev = dummy;
-    while(A != NULL && B != NULL)
+    NODE C;
+    if(A -> exp == B -> exp)
     {
-        if(A -> exp > B -> exp)
-        {
-            prev -> link = A;
-            prev = A;
-            A = A -> link;
-        }
-        else if(A -> exp < B -> exp)
-        {
-            prev -> link = B;
-            prev = B;
-            B = B -> link;
-        }
-        else
-        {
-            A -> coeff += B -> coeff;
-            prev -> link = A;
-            prev = A;
-            A = A -> link;
-            B = B -> link;
-        }
+        C = createNode(A -> coeff + B -> coeff, A -> exp);
+        C -> link = addPolynomial(A -> link, B -> link);
     }
-    if(A != NULL)
+    else if(A -> exp > B -> exp)
     {
-        prev -> link = A;
+        C = createNode(A -> coeff, A -> exp);
+        C -> link = addPolynomial(A -> link, B);
     }
-    if(B != NULL)
+    else
     {
-        prev -> link = B;
+        C = createNode(B -> coeff, B -> exp);
+        C -> link = addPolynomial(A, B -> link);    
     }
-    return dummy -> link;
+    return C;
 }
 */

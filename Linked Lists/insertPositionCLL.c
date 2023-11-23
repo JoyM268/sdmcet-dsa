@@ -41,11 +41,11 @@ int lengthOfList()
 void insertAtPosCLL()
 {
     struct node *newNode, *temp;
-    int pos, i = 2, l;
+    int pos, i = 1, l;
     printf("Enter the position: ");
     scanf("%d", &pos);
     l = lengthOfList();
-    if(pos <= 0 || pos > l)
+    if(pos < 1 || pos > l)
     {
         printf("Invalid position");
     }
@@ -60,7 +60,7 @@ void insertAtPosCLL()
         scanf("%d", &newNode -> info);
         newNode -> link = NULL;
         temp = tail -> link;
-        while(i < pos)
+        while(i < pos - 1)
         {
             temp = temp -> link;
             i++;

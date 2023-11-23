@@ -49,19 +49,33 @@ NODE createPolynomial(NODE first)
     return first;
 }
 
+void displayPolynomial(NODE first);
 NODE multiplyPolynomial(NODE A, NODE B)
 {
     if(A == NULL || B == NULL) return NULL;
-    NODE C = NULL;
+    NODE C = NULL, temp1, temp2;
     while(A != NULL)
     {
-        NODE temp = B;
-        while(temp != NULL)
+        temp1 = B;
+        while(temp1 != NULL)
         {
-            C = insertTerm(C, A -> coeff * temp -> coeff, A -> exp + temp -> exp);
-            temp = temp -> link;
+            C = insertTerm(C, A -> coeff * temp1 -> coeff, A -> exp + temp1 -> exp);
+            temp1 = temp1 -> link;
         }
         A = A -> link;
+    }
+    temp1 = C;
+    while(temp1 -> link != NULL)
+    {
+        if(temp1 -> exp == temp1 -> link -> exp)
+        {
+            temp1 -> coeff += temp1 -> link -> coeff;
+            temp2 = temp1 -> link;
+            temp1 -> link = temp1 -> link -> link;
+            free(temp2);
+            continue; 
+        }
+        temp1 = temp1 -> link;
     }
     return C;
 }

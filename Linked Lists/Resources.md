@@ -24,6 +24,9 @@
 - **GeeksforGeeks**
     - [Linked List Data Structure](https://www.geeksforgeeks.org/data-structures/linked-list/)
 
+- **Tutorialspoint**
+    - [Data Structure and Algorithms - Linked List](https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm)
+
 ## Linked List Questions (LeetCode and GFG):
 
 1. [Reverse linked list](https://leetcode.com/problems/reverse-linked-list/)

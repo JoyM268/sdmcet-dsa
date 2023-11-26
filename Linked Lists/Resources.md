@@ -27,6 +27,9 @@
 - **Tutorialspoint**
     - [Data Structure and Algorithms - Linked List](https://www.tutorialspoint.com/data_structures_algorithms/linked_list_algorithms.htm)
 
+- **PrepInsta**
+    - [Linked List Data Structure](https://prepinsta.com/c-program/linked-list/)
+
 ## Linked List Questions (LeetCode and GFG):
 
 1. [Reverse linked list](https://leetcode.com/problems/reverse-linked-list/)

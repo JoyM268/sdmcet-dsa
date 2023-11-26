@@ -21,7 +21,7 @@
     - [Linked List Data Structure](https://www.geeksforgeeks.org/data-structures/linked-list/)
 
 ### Linked List Questions (LeetCode and GFG):
-1. [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+1. [Remove duplicate element from sorted Linked List](https://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/)
 2. [Reverse linked list](https://leetcode.com/problems/reverse-linked-list/)
 3. [Find middle of the linked list](https://leetcode.com/problems/middle-of-the-linked-list/)
 4. [Remove Nth node from end of list](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)

@@ -12,7 +12,8 @@
 
 ### Linked List Problems:
 - **Striver** 
-    - [Placement Series - Linked List](https://youtube.com/playlist?list=PLBlnK6fEyqRgFNP3HnaVayBYev4SGPwJs&feature=shared)
+    - [Placement Series - Linked List](https://youtube.com/playlist?list=PLgUwDviBIf0r47RKH7fdWN54AbWFgGuii&feature=shared)
+
 - **NeetCode**
     - [Linked List Coding Problems](https://youtube.com/playlist?list=PLot-Xpze53leU0Ec0VkBhnf4npMRFiNcB&feature=shared)
 

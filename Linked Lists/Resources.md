@@ -36,7 +36,7 @@
 11. [Intersection of two linked lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)
 12. [Rotate linked list](https://leetcode.com/problems/rotate-list/)
 13. [Palindrome linked list](https://leetcode.com/problems/palindrome-linked-list/) 
-14. [Reverse both parts of linked list](https://practice.geeksforgeeks.org/problems/reverse-both-parts--170647)
+14. [Reverse both parts of linked list](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.geeksforgeeks.org/problems/reverse-both-parts--170647/1&ved=2ahUKEwjS4f31tOGCAxVSzzgGHQjYCA0QFnoECCYQAQ&usg=AOvVaw0s7q3pC2XNF8A3wK55nGHC)
 15. [Reverse a sublist of a linked list](https://leetcode.com/problems/reverse-linked-list-ii/)
 16. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
 17. [Merge k sorted lists](https://leetcode.com/problems/merge-k-sorted-lists/)

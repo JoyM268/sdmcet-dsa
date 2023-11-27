@@ -72,7 +72,7 @@ void multiplyPolynomial(NODE head1, NODE head2)
     NODE head3 = NULL, ptr1 = head1, ptr2 = head2;
     if(head1 == NULL || head2 == NULL) 
     {
-        printf("Zero polynomial\n");
+        printf("\nZero polynomial\n");
         return;
     }
     while(ptr1 != NULL)

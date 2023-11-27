@@ -61,10 +61,10 @@ void displayPolynomial(NODE head)
     struct node *temp = head;
     while(temp -> link != NULL)
     {
-        printf("%.1fx^%d + ", temp -> coeff, temp -> exp);
+        printf("(%.1fx^%d)+", temp -> coeff, temp -> exp);
         temp = temp -> link;
     }
-    printf("%.1fx^%d\n", temp -> coeff, temp -> exp);
+    printf("(%.1fx^%d)\n", temp -> coeff, temp -> exp);
 }
 
 void addPolynomial(NODE head1, NODE head2)

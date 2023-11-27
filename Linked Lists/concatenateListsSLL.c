@@ -92,7 +92,8 @@ int main()
             break;
         case 5:
             first = concatenate(first, second);
-            printf("List first and second concatenated\n");
+            printf("The concatenated list is:\n");
+            display(first);
             break;
         case 6:
             exit(0);

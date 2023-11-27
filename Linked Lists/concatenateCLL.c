@@ -8,6 +8,25 @@ struct node{
 };
 typedef struct node *NODE;
 
+void display(NODE tail)
+{
+    NODE temp;
+    if(tail == NULL)
+    {
+        printf("List is empty\n");
+    }
+    else
+    {
+        temp = tail -> link;
+        while(temp -> link != tail -> link)
+        {
+            printf("%d --> ", temp -> info);
+            temp = temp -> link;
+        }
+        printf("%d -->\n", temp -> info);
+    }
+}
+
 NODE concatenateCLL(NODE list1, NODE list2)
 {
     NODE p;
@@ -19,6 +38,8 @@ NODE concatenateCLL(NODE list1, NODE list2)
     list1 -> link = list2 -> link;
     list2 -> link = p;
     list1 = list2;
+    printf("Concatenated List is:\n");
+    display(list1);
     return list1;
 }
 
@@ -39,25 +60,6 @@ NODE insertAtEnd(NODE tail)
         tail = newNode;
     }
     return tail;
-}
-
-void display(NODE tail)
-{
-    NODE temp;
-    if(tail == NULL)
-    {
-        printf("List is empty\n");
-    }
-    else
-    {
-        temp = tail -> link;
-        while(temp -> link != tail -> link)
-        {
-            printf("%d --> ", temp -> info);
-            temp = temp -> link;
-        }
-        printf("%d -->\n", temp -> info);
-    }
 }
 
 int main()

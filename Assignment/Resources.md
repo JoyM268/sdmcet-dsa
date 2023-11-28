@@ -43,3 +43,4 @@
     - [Josephus Circle Using Circular Linked List - PrepBytes](https://www.prepbytes.com/blog/linked-list/josephus-circle-using-circular-linked-list/)
 - **Sparse Matrix:**
     - [Sparse Matrix with Multi Linked List - Concepts and C Program - NandaAcademies](https://youtu.be/ZXNblq3Tl-s?feature=shared)
+    - [Sparse Matrix Representation Using Linked List - TechKnow Study](https://youtu.be/YJ0eJkXOi8I?feature=shared)

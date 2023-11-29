@@ -39,5 +39,8 @@
 **Question 9:**
 - **Josephus Problem:**
     - [C Program to Solve Josephus Problem using Linked List - Sanfoundry](https://www.sanfoundry.com/c-program-solve-josephus-problem-using-linked-list/)
+    - [Josephus problem using a circular linked list - MUEngineer](https://youtu.be/I07jmueEBsk?feature=shared)
+    - [Josephus Circle Using Circular Linked List - PrepBytes](https://www.prepbytes.com/blog/linked-list/josephus-circle-using-circular-linked-list/)
 - **Sparse Matrix:**
     - [Sparse Matrix with Multi Linked List - Concepts and C Program - NandaAcademies](https://youtu.be/ZXNblq3Tl-s?feature=shared)
+    - [Sparse Matrix Representation Using Linked List - TechKnow Study](https://youtu.be/YJ0eJkXOi8I?feature=shared)

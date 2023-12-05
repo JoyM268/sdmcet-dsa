@@ -47,7 +47,7 @@ void insertAtPosCLL()
     l = lengthOfList();
     if(pos < 1 || pos > l)
     {
-        printf("Invalid position");
+        printf("Invalid position\n");
     }
     else if(pos == 1)
     {

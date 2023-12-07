@@ -60,15 +60,22 @@ void display(NODE first)
 NODE concatenateDLL(NODE first, NODE second)
 {
     NODE cur = first;
-    if(first == NULL) return second;
-    if(second == NULL) return first;
+    if(first == NULL)
+    {
+        display(second);
+        return second;
+    }
+    if(second == NULL)
+    {
+        display(first);
+        return first;
+    }
     while(cur -> right != NULL)
     {
         cur = cur -> right;
     }
     cur -> right = second;
     second -> left = cur;
-    printf("The concatenated list is:\n");
     display(first);
     return first;
 }

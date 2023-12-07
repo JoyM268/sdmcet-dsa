@@ -3,6 +3,7 @@
 ## Linked List Courses:
 - **Jenny**
     - [Trees Complete Playlist](https://youtube.com/playlist?list=PLLcbVqbhgEc1YDtJmHnkXgE5Dl7d5hynl&feature=shared)
+
 - **Algorithms Made Easy**
     - [Tree Data Structure](https://youtube.com/playlist?list=PLJtzaiEpVo2zx-rCqLMmcFEpZw1UpGWls&feature=shared)
 

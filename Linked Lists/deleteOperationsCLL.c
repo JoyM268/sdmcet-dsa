@@ -7,7 +7,6 @@ struct node{
     struct node *link;
 } *tail = NULL;
 
-
 void deleteBeginCLL()
 {
     struct node *temp;
@@ -30,7 +29,6 @@ void deleteBeginCLL()
         free(temp);
     }
 }
-
 
 void deleteEndCLL()
 {

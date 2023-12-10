@@ -114,11 +114,12 @@ node *deleteAtEnd(node *tail)
     }
     temp -> next = tail -> next;
     printf("Deleted element is %d\n", tail -> data);
-    free(tail);
+    node *delete = tail;
     if(temp == tail)
         tail = NULL;
     else
         tail = temp;
+    free(delete);
     return tail;
 }
 

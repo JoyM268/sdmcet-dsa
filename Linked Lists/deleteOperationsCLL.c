@@ -33,12 +33,13 @@ void deleteBeginCLL()
 void deleteEndCLL()
 {
     struct node *cur, *prev;
-    cur = tail -> link;
     if(tail == NULL)
     {
         printf("List is empty\n");
+        return;
     }
-    else if(cur -> link == cur)
+    cur = tail -> link;
+    if(cur -> link == cur)
     {
         tail = NULL;
         printf("Deleted element %d\n", cur -> info);

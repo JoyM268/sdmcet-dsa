@@ -75,6 +75,11 @@ int lengthOfList()
 
 void deleteAtPos()
 {
+    if(tail == NULL)
+    {
+        printf("List is empty\n");
+        return;
+    }
     struct node *cur, *nextNode;
     int pos, i = 1, length;
     cur = tail -> link;

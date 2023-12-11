@@ -1,4 +1,4 @@
-//Write a C program to search an element in the linked list
+//Write a C program to search an element in the linked list if not found insert the element into the list
 #include<stdio.h>
 #include<stdlib.h>
 

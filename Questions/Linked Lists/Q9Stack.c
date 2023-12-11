@@ -1,10 +1,10 @@
-//Implementation of stack using singly linked list
+//Implementation of stack using doubly linked list.
 #include<stdio.h>
 #include<stdlib.h>
 
 struct node{
     int data;
-    struct node *link;
+    struct node *prev, *next;
 } *top = NULL;
 
 void push(int value)
@@ -12,14 +12,10 @@ void push(int value)
     struct node *newNode;
     newNode = (struct node *)malloc(sizeof(struct node));
     newNode -> data = value;
-    if(top == NULL)
-    {
-        newNode -> link = NULL;
-    }
-    else
-    {
-        newNode -> link = top;
-    }
+    newNode -> prev = NULL;
+    newNode -> next = top;
+    if(top != NULL)
+        top -> prev = newNode;
     top = newNode;
 }
 
@@ -29,13 +25,12 @@ void pop()
     {
         printf("Stack is empty\n");
     }
-    else
-    {
-        struct node *temp = top;
-        printf("Deleted element is %d\n", temp -> data);
-        top = temp -> link;
-        free(temp);
-    }
+    struct node *temp = top;
+    top = top -> next;
+    if(top != NULL)
+        top -> prev = NULL;
+    printf("Deleted element is %d\n", temp -> data);
+    free(temp);
 }
 
 void display()
@@ -49,7 +44,7 @@ void display()
     while(temp != NULL)
     {
         printf("%d --> ", temp -> data);
-        temp = temp -> link;
+        temp = temp -> next;
     }
     printf("NULL\n");
 }

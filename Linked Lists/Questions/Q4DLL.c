@@ -25,7 +25,7 @@ node *insertAtBegin(node *head, int item)
     return temp;
 }
 
-node*insertAtEnd(node *head, int item)
+node *insertAtEnd(node *head, int item)
 {
     node *temp = createNode(item);
     if(head == NULL) return temp;

@@ -1,5 +1,4 @@
 // Write a c program to evaluate given polynomial for given values of x and y
-//Product
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -67,6 +66,42 @@ void displayPolynomial(NODE head)
     printf("(%.1fx^%d)\n", temp -> coeff, temp -> exp);
 }
 
+void addPolynomial(NODE head1, NODE head2)
+{
+    NODE head3 = NULL;
+    while (head1 != NULL && head2 != NULL)
+    {
+        if(head1 -> exp > head2 -> exp)
+        {
+            head3 = insertTerm(head3, head1 -> coeff, head1 -> exp);
+            head1 = head1 -> link;
+        }
+        else if(head1 -> exp < head2 -> exp)
+        {
+            head3 = insertTerm(head3, head2 -> coeff, head2 -> exp);
+            head2 = head2 -> link;
+        }
+        else
+        {
+            head3 = insertTerm(head3, head1 -> coeff + head2 -> coeff, head1 -> exp);
+            head1 = head1 -> link;
+            head2 = head2 -> link;
+        }
+    }
+    while(head1 != NULL)
+    {
+        head3 = insertTerm(head3, head1 -> coeff, head1 -> exp);
+        head1 = head1 -> link;
+    }
+    while(head2 != NULL)
+    {
+        head3 = insertTerm(head3, head2 -> coeff, head2 -> exp);
+        head2 = head2 -> link;
+    }
+    printf("\nAdded polynomial is:\n");
+    displayPolynomial(head3);
+}
+
 void multiplyPolynomial(NODE head1, NODE head2)
 {
     NODE head3 = NULL, ptr1 = head1, ptr2 = head2;
@@ -91,11 +126,12 @@ void multiplyPolynomial(NODE head1, NODE head2)
 
 int main()
 {
-    NODE A = NULL, B = NULL;
+    NODE head1 = NULL, head2 = NULL;
     printf("Enter 1st polynomial:\n");
-    A = createPolynomial(A);
+    head1 = createPolynomial(head1);
     printf("\nEnter 2nd Polynomail:\n");
-    B = createPolynomial(B);
-    multiplyPolynomial(A, B);
+    head2 = createPolynomial(head2);
+    addPolynomial(head1, head2);
+    multiplyPolynomial(head1, head2);
     return 0;
 }

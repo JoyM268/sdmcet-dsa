@@ -67,34 +67,25 @@ NODE search(NODE l, int x)
     return NULL;
 }
 
-NODE searchInsert(NODE *l, int x)
+NODE searchInsert(NODE l, int x)
 {
-    NODE node = search(*l, x);
+    NODE node = search(l, x);
     if(node)
     {
         printf("%d exists in the list\n", node -> info);
         return node;
     }
-    NODE temp = *l, newNode = createNode();
+    NODE newNode = createNode();
     newNode -> info = x;
     newNode -> link = NULL;
-    if(temp == NULL)
-    {
-        *l = newNode;
-        return newNode;
-    }
-    while(temp -> link != NULL)
-    {
-        temp = temp -> link;
-    }
-    temp -> link = newNode;
+    l = insertAtEnd(l, x);
     printf("%d inserted into the list\n", newNode -> info);
-    return newNode;
+    return l;
 }
 
 int main()
 {
-    NODE first = NULL, xs;
+    NODE first = NULL;
     int choice, item;
     for(;;)
     {
@@ -126,7 +117,7 @@ int main()
             case 4:
                 printf("Enter the key element: ");
                 scanf("%d", &item);
-                xs = searchInsert(&first, item);
+                first = searchInsert(first, item);
                 break;
             case 5:
                 exit(0);

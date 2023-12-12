@@ -1,25 +1,28 @@
-//Write a c program to reverse the elements of a given linked lists.
-#include<stdio.h>
-#include<stdlib.h>
+// Write a c program to reverse the elements of a given linked lists.
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct node{
+struct node
+{
     int data;
     struct node *next;
-}node;
+};
+typedef struct node *NODE;
 
-node *createNode(int data)
+NODE createNode(int data)
 {
-    node *temp = (node *)malloc(sizeof(node));
+    NODE temp = (NODE)malloc(sizeof(struct node));
     temp -> data = data;
     temp -> next = NULL;
     return temp;
 }
 
-node *insertAtEnd(node *head, int data)
+NODE insertAtEnd(NODE head, int data)
 {
-    node *temp = createNode(data);
-    if(head == NULL) return temp;
-    node *cur = head;
+    NODE temp = createNode(data);
+    if(head == NULL)
+        return temp;
+    NODE cur = head;
     while(cur -> next != NULL)
     {
         cur = cur -> next;
@@ -28,10 +31,10 @@ node *insertAtEnd(node *head, int data)
     return head;
 }
 
-node *reverseList(node *head)
+NODE reverseList(NODE head)
 {
-    node *rev = NULL, *temp;
-    while(head != NULL) 
+    NODE rev = NULL, temp;
+    while(head != NULL)
     {
         temp = head;
         head = head -> next;
@@ -41,18 +44,17 @@ node *reverseList(node *head)
     return rev;
 }
 
-void displayList(node *head)
+void displayList(NODE head)
 {
-
     if(head == NULL)
     {
         printf("List is empty\n");
         return;
     }
-    node *cur = head;
+    NODE cur = head;
     while(cur != NULL)
     {
-        printf("%d --> ", cur -> data);
+        printf("%d - ->  ", cur -> data);
         cur = cur -> next;
     }
     printf("NULL\n");
@@ -60,7 +62,7 @@ void displayList(node *head)
 
 int main()
 {
-    node *head = NULL;
+    NODE head = NULL;
     int choice, item;
     for(;;)
     {
@@ -69,21 +71,21 @@ int main()
         scanf("%d", &choice);
         switch(choice)
         {
-            case 1:
-                printf("Enter the element to be inserted: ");
-                scanf("%d", &item);
-                head = insertAtEnd(head, item);
-                break;
-            case 2:
-                displayList(head);
-                break;
-            case 3:
-                head = reverseList(head);
-                break;
-            case 4:
-                exit(0);
-            default:
-                printf("Invalid choice\n");
+        case 1:
+            printf("Enter the element to be inserted: ");
+            scanf("%d", &item);
+            head = insertAtEnd(head, item);
+            break;
+        case 2:
+            displayList(head);
+            break;
+        case 3:
+            head = reverseList(head);
+            break;
+        case 4:
+            exit(0);
+        default:
+            printf("Invalid choice\n");
         }
     }
     return 0;

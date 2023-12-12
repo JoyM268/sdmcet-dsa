@@ -1,85 +1,87 @@
 // C program to combine 2 ordered lists into a singly linked list.
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct node{
+struct node
+{
     int data;
     struct node *next;
-}node;
+};
+typedef struct node *NODE;
 
-node *createNode(int data)
+NODE createNode(int data)
 {
-    node *temp = (node *)malloc(sizeof(node));
-    temp -> next = NULL;
-    temp -> data = data;
+    NODE temp = (NODE)malloc(sizeof(struct node));
+    temp->next = NULL;
+    temp->data = data;
     return temp;
 }
 
-node *insertOrdered(node *head, int data)
+NODE insertOrdered(NODE head, int data)
 {
-    node *temp = createNode(data);
-    if(!head) return temp;
-    node *cur = head;
-    if(head -> data > data)
+    NODE temp = createNode(data);
+    if (!head)
+        return temp;
+    NODE cur = head;
+    if (head->data > data)
     {
-        temp -> next = head;
+        temp->next = head;
         return temp;
     }
-    while(cur -> next != NULL && cur -> next -> data < data)
+    while (cur->next != NULL && cur->next->data < data)
     {
-        cur = cur -> next;
+        cur = cur->next;
     }
-    temp -> next = cur -> next;
-    cur -> next = temp;
+    temp->next = cur->next;
+    cur->next = temp;
     return head;
 }
 
-void swap(node **head1, node **head2)
+NODE mergeList(NODE head1, NODE head2)
 {
-    node *temp = *head1;
-    *head1 = *head2;
-    *head2 = temp;
-}
-
-node *mergeList(node *head1, node *head2)
-{
-    if(head1 == NULL) return head2;
-    if(head2 == NULL) return head1;
-    node *temp;
-    if(head1 -> data <= head2 -> data)
+    if(head1 == NULL)
+        return head2;
+    if(head2 == NULL)
+        return head1;
+    NODE temp;
+    if(head1->data <= head2->data)
     {
         temp = head1;
-        temp -> next = mergeList(head1 -> next, head2);
+        temp->next = mergeList(head1->next, head2);
     }
     else
     {
         temp = head2;
-        temp -> next = mergeList(head1, head2 -> next);
+        temp->next = mergeList(head1, head2->next);
     }
-    return temp;    
+    return temp;
 }
 
-void displayList(node *head)
+void displayList(NODE head)
 {
-    if(!head) return;
+    if(head == NULL)
+    {
+        printf("List is empty\n");
+        return;
+    }
     while(head)
     {
-        printf("%d -> ", head -> data);
-        head = head -> next;
+        printf("%d -> ", head->data);
+        head = head->next;
     }
     printf("NULL\n");
 }
 
 int main()
 {
-    node *head1 = NULL, *head2 = NULL;
+    NODE head1 = NULL, head2 = NULL;
     int item, choice;
     for(;;)
     {
         printf("\n1.Insert in list 1\t2.Insert in list 2\t3.Display List 1\t4.Display list 2\t5.Merge List\t6.Exit\n");
         printf("Enter the choice: ");
         scanf("%d", &choice);
-        switch(choice)
+        switch (choice)
         {
             case 1:
                 printf("Enter the element to be inserted: ");
@@ -98,7 +100,7 @@ int main()
                 displayList(head2);
                 break;
             case 5:
-                head1 = mergeList(head1 , head2);
+                head1 = mergeList(head1, head2);
                 printf("The merged list is:\n");
                 displayList(head1);
                 break;
@@ -110,23 +112,30 @@ int main()
     }
 }
 
-//Method 2
+// Method 2
 /*
-node *mergeList(node *head1, node *head2)
+void swap(NODE *head1, NODE *head2)
 {
-    if(head1 -> data > head2 -> data) swap(&head1, &head2);
-    node *newHead = head1;
-    while(head1 != NULL && head2 != NULL)
+  NODE temp = *head1;
+  *head1 = *head2;
+  *head2 = temp;
+}
+
+NODE mergeList(NODE head1, NODE head2)
+{
+  if (head1 -> data > head2 -> data) swap(&head1, &head2);
+  NODE newHead = head1;
+  while (head1 != NULL && head2 != NULL)
+  {
+    NODE temp = NULL;
+    while (head1 != NULL && head1 -> data <= head2 -> data)
     {
-        node *temp = NULL;
-        while(head1 != NULL && head1 -> data <= head2 -> data)
-        {
-            temp = head1;
-            head1 = head1 -> next;
-        }
-        temp -> next = head2;
-        swap(&head1, &head2);
+      temp = head1;
+      head1 = head1 -> next;
     }
-    return newHead;
+    temp -> next = head2;
+    swap(&head1, &head2);
+  }
+  return newHead;
 }
 */

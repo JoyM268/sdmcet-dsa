@@ -43,20 +43,20 @@ void swap(node **head1, node **head2)
 
 node *mergeList(node *head1, node *head2)
 {
-    if(head1 -> data > head2 -> data) swap(&head1, &head2);
-    node *newHead = head1;
-    while(head1 != NULL && head2 != NULL)
+    if(head1 == NULL) return head2;
+    if(head2 == NULL) return head1;
+    node *temp;
+    if(head1 -> data <= head2 -> data)
     {
-        node *temp = NULL;
-        while(head1 != NULL && head1 -> data <= head2 -> data)
-        {
-            temp = head1;
-            head1 = head1 -> next;
-        }
-        temp -> next = head2;
-        swap(&head1, &head2);
+        temp = head1;
+        temp -> next = mergeList(head1 -> next, head2);
     }
-    return newHead;
+    else
+    {
+        temp = head2;
+        temp -> next = mergeList(head1, head2 -> next);
+    }
+    return temp;    
 }
 
 void displayList(node *head)
@@ -109,3 +109,24 @@ int main()
         }
     }
 }
+
+//Method 2
+/*
+node *mergeList(node *head1, node *head2)
+{
+    if(head1 -> data > head2 -> data) swap(&head1, &head2);
+    node *newHead = head1;
+    while(head1 != NULL && head2 != NULL)
+    {
+        node *temp = NULL;
+        while(head1 != NULL && head1 -> data <= head2 -> data)
+        {
+            temp = head1;
+            head1 = head1 -> next;
+        }
+        temp -> next = head2;
+        swap(&head1, &head2);
+    }
+    return newHead;
+}
+*/

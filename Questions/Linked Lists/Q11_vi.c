@@ -75,11 +75,8 @@ NODE searchInsert(NODE l, int x)
         printf("%d exists in the list\n", node -> info);
         return node;
     }
-    NODE newNode = createNode();
-    newNode -> info = x;
-    newNode -> link = NULL;
     l = insertAtEnd(l, x);
-    printf("%d inserted into the list\n", newNode -> info);
+    printf("%d inserted into the list\n", x);
     return l;
 }
 

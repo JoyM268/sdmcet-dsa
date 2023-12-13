@@ -37,6 +37,15 @@ NODE insertAtEnd(NODE first, int ele)
     }
 }
 
+NODE insertAtBegin(NODE first, int ele)
+{
+    NODE temp = createNode();
+    temp -> info = ele;
+    printf("--> %d\n", temp -> info);
+    temp -> link = first;
+    return temp;
+}
+
 void displayList(NODE first)
 {
     if(first == NULL)
@@ -73,13 +82,10 @@ NODE searchInsert(NODE l, int x)
     if(node)
     {
         printf("%d exists in the list\n", node -> info);
-        return node;
+        return l;
     }
-    NODE newNode = createNode();
-    newNode -> info = x;
-    newNode -> link = NULL;
-    l = insertAtEnd(l, x);
-    printf("%d inserted into the list\n", newNode -> info);
+    l = insertAtBegin(l, x);
+    printf("%d inserted into the list\n", l -> info);
     return l;
 }
 

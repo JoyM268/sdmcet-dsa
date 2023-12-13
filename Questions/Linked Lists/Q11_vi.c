@@ -81,8 +81,8 @@ NODE searchInsert(NODE l, int x)
     NODE node = search(l, x);
     if(node)
     {
-        printf("%d exists in the list\n", l -> info);
-        return node;
+        printf("%d exists in the list\n", node -> info);
+        return l;
     }
     l = insertAtBegin(l, x);
     printf("%d inserted into the list\n", l -> info);

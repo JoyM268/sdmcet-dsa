@@ -109,6 +109,7 @@ int main()
                 break;
             case 5:
                 first = concatenateDLL(first, second);
+                second = NULL;
                 break;
             case 6:
                 exit(0);

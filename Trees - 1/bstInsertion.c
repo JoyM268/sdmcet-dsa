@@ -9,32 +9,32 @@ typedef struct node *NODE;
 
 NODE createNode()
 {
-	NODE root = (NODE)malloc(sizeof(struct node));
-	return root;
+  NODE root = (NODE)malloc(sizeof(struct node));
+  return root;
 }
 
 NODE insertBst(NODE root, int ele)
 {
-    NODE cur, prev;
-    NODE temp = createNode();
-	temp -> info = ele;
-	temp -> left = temp -> right = NULL;
-	if(root == NULL)
-		return temp;
-	cur = root, prev = NULL;
-	while(cur != NULL)
-	{
-		prev = cur;
-		if(ele < cur -> info)
-			cur = cur -> left;
-		else
-			cur = cur -> right;
-	}
-	if(ele < prev -> info)
-		prev -> left = temp;
-	else
-		prev -> right = temp;
-	return root;
+  NODE cur, prev;
+  NODE temp = createNode();
+  temp -> info = ele;
+  temp -> left = temp -> right = NULL;
+  if(root == NULL)
+	return temp;
+  cur = root, prev = NULL;
+  while(cur != NULL)
+  {
+	prev = cur;
+	if(ele < cur -> info)
+	  cur = cur -> left;
+    else
+	  cur = cur -> right;
+  }
+  if(ele < prev -> info)
+    prev -> left = temp;
+  else
+	prev -> right = temp;
+  return root;
 }
 
 void inorderBst(NODE root)

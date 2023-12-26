@@ -25,6 +25,7 @@ struct node *insertAtEnd(struct node *head, int ele)
     return head;
 }
 
+//Answer:
 void displayList(struct node *head)
 {
     if(head == NULL)
@@ -40,7 +41,6 @@ void displayList(struct node *head)
     printf("NULL\n");
 }
 
-//Answer:
 struct node *append(struct node *list1, struct node *list2)
 {
     if(list1 == NULL)

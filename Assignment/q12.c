@@ -11,9 +11,6 @@ struct node{
 };
 typedef struct node *NODE;
 
-NODE stack[SIZE];
-int top = -1;
-
 NODE createNode(char item)
 {
     NODE root = (NODE)malloc(sizeof(struct node));
@@ -23,11 +20,11 @@ NODE createNode(char item)
     return root;
 }
 
-NODE createExpTree(char postfix[])
+NODE constructBinaryExpTree(char postfix[])
 {
     char ch;
-    NODE op1, op2, temp;
-    int i, len = strlen(postfix);
+    NODE temp, stack[SIZE];
+    int i, len = strlen(postfix), top = -1;
     for(i = 0; i < len; i++)
     {
         ch = postfix[i];
@@ -38,29 +35,35 @@ NODE createExpTree(char postfix[])
         }
         else
         {
-            op2 = stack[top--];
-            op1 = stack[top--];
-            temp -> left = op1;
-            temp -> right = op2;
+            temp -> right = stack[top--];
+            temp -> left = stack[top--];
             stack[++top] = temp;
         }
     }
     return stack[top--];
 }
 
-int evaluateExpTree(NODE root)
+float evaluateExpTree(NODE root)
 {
     if(root == NULL) return 0;
-    if(isdigit(root -> data))
-        return root -> data - '0';
-    int op1 = evaluateExpTree(root -> left);
-    int op2 = evaluateExpTree(root -> right);
+    float num;
+    float op1 = evaluateExpTree(root -> left);
+    float op2 = evaluateExpTree(root -> right);
     switch(root -> data)
     {
         case '+': return op1 + op2;
         case '-': return op1 - op2;
         case '*': return op1 * op2;
         case '/': return op1 / op2;
+        default:
+            if(isalpha(root -> data))
+            {
+                printf("Enter value of %c: ", root -> data);
+                scanf("%f", &num);
+                return num;
+            }
+            else
+                return root -> data - '0';
     }
 }
 
@@ -95,7 +98,7 @@ int main()
     char postfix[SIZE];
     printf("Enter a valid postfix expression: ");
     scanf("%s", postfix);
-    NODE root = createExpTree(postfix);
+    NODE root = constructBinaryExpTree(postfix);
     printf("\nInorder:\n");
     inorderPrint(root);
     printf("\nPreorder:\n");
@@ -103,5 +106,5 @@ int main()
     printf("\nPostorder:\n");
     postorderPrint(root);
     printf("\n");
-    printf("The result of the expression is: %d\n", evaluateExpTree(root));
+    printf("The result of the expression is: %.2f\n", evaluateExpTree(root));
 }

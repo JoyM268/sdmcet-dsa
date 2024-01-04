@@ -1,20 +1,20 @@
 # Resources  
 
-## Linked List Courses:
+## Trees Courses:
 - **Jenny**
     - [Trees Complete Playlist](https://youtube.com/playlist?list=PLLcbVqbhgEc1YDtJmHnkXgE5Dl7d5hynl&feature=shared)
 
 - **Algorithms Made Easy**
     - [Tree Data Structure](https://youtube.com/playlist?list=PLJtzaiEpVo2zx-rCqLMmcFEpZw1UpGWls&feature=shared)
 
-## Linked List Problems:
+## Trees Problems:
 - **Striver** 
     - [Placement Series - Trees](https://youtube.com/playlist?list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&feature=shared)
 
 - **NeetCode**
     - [Trees Coding Problems](https://youtube.com/playlist?list=PLot-Xpze53ldg4pN6PfzoJY7KsKcxF1jg&feature=shared)
 
-## Linked List Articles:
+## Trees Articles:
 - **GeeksforGeeks**
     - [Tree Data Structure](https://www.geeksforgeeks.org/tree-data-structure/)
 
@@ -24,7 +24,7 @@
 - **Tutorialspoint**
     - [Tree Data Structure](https://www.tutorialspoint.com/data_structures_algorithms/tree_data_structure.htm)
 
-## Linked List Questions (LeetCode):
+## Trees Questions (LeetCode):
 1. [Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/) 
 2. [Binary Tree Preorder Traversal](https://leetcode.com/problems/binary-tree-preorder-traversal/)
 3. [Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)

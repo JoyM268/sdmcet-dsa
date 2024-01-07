@@ -107,4 +107,5 @@ int main()
     postorderPrint(root);
     printf("\n");
     printf("The result of the expression is: %.2f\n", evaluateExpTree(root));
+    return 0;
 }

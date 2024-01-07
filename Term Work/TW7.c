@@ -19,7 +19,7 @@ NODE create(int ele)
     return root;
 }
 
-NODE insert(NODE root, int ele)
+NODE insertBst(NODE root, int ele)
 {
     NODE cur = root, prev = NULL, temp;
     temp = create(ele);
@@ -81,7 +81,7 @@ int main()
                 root = insertBst(root, item);
                 break;
             case 2:
-                inorderBst(root);
+                inorder(root);
                 printf("\n");
                 break;
             case 3:

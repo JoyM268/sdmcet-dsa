@@ -69,7 +69,7 @@ NODE search(NODE l, int x)
     return NULL;
 }
 
-NODE searchInsert(NODE l, int x)
+NODE srchinsrt(NODE l, int x)
 {
     NODE node = search(l, x);
     if(node)

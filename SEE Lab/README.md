@@ -1,1 +1,0 @@
-This directory contains typical programs that may be asked in the DSA SEE lab exam.

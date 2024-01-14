@@ -5,7 +5,6 @@ and s[1] through s[stacksize-1] contain the elements on the stack. Write C decla
 #define stackSize 5
 
 int s[stackSize] = {0};
-
 int empty()
 {
     if(!s[0]) return 1;
@@ -42,6 +41,7 @@ void display()
     int i;
     for(i = 1; i <= s[0]; i++)
         printf("%d ", s[i]);
+    printf("\n");
 }
 
 int main()

@@ -71,21 +71,29 @@ NODE search(NODE l, int x)
 
 NODE srchinsrt(NODE l, int x)
 {
-    NODE node = search(l, x);
-    if(node)
+    NODE cur = l, prev = NULL;
+    while(cur != NULL && cur -> info != x)
     {
-        printf("%d exists in the list\n", node -> info);
-        return l;
+        prev = cur;
+        cur = cur -> link;
+    }
+    if(cur != NULL)
+    {
+        printf("%d exists in the list\n", cur -> info);
+        return cur;
     }
     printf("%d does not exist in the list\n", x);
-    l = insertAtBegin(l, x);
-    printf("%d inserted into the list\n", l -> info);
-    return l;
+    NODE temp = createNode();
+    temp -> link = NULL;
+    temp -> info = x;
+    prev -> link = temp;
+    printf("%d inserted into the list\n", temp -> info);
+    return temp;
 }
 
 int main()
 {
-    NODE first = NULL;
+    NODE first = NULL, node;
     int choice, item;
     for(;;)
     {
@@ -105,7 +113,8 @@ int main()
             case 3:
                 printf("Enter the key element: ");
                 scanf("%d", &item);
-                if(search(first, item))
+                node = search(first, item);
+                if(node)
                     printf("%d found\n", item);
                 else
                     printf("%d not found\n", item);
@@ -113,7 +122,7 @@ int main()
             case 4:
                 printf("Enter the key element: ");
                 scanf("%d", &item);
-                first = searchInsert(first, item);
+                node = srchinsrt(first, item);
                 break;
             case 5:
                 exit(0);

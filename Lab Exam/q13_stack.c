@@ -13,27 +13,21 @@ void push(int value)
     struct node *newNode;
     newNode = (struct node *)malloc(sizeof(struct node));
     newNode -> data = value;
-    if(top == NULL)
-        newNode -> link = NULL;
-    else
-        newNode -> link = top;
+    newNode -> link = top;
     top = newNode;
-    printf("Successful insertion\n");
 }
 
 void pop()
 {
     if(top == NULL)
     {
-        printf("Empty list & stack is empty\n");
+        printf("Stack is empty\n");
+        return;
     }
-    else
-    {
-        struct node *temp = top;
-        printf("Deleted element is %d\n", temp -> data);
-        top = temp -> link;
-        free(temp);
-    }
+    struct node *temp = top;
+    printf("Deleted element is %d\n", temp -> data);
+    top = temp->link;
+    free(temp);
 }
 
 void display()
@@ -41,17 +35,16 @@ void display()
     if(top == NULL)
     {
         printf("Stack is empty\n");
+        return;
     }
-    else
+
+    struct node *temp = top;
+    while (temp != NULL)
     {
-        struct node *temp = top;
-        while(temp -> link != NULL)
-        {
-            printf("%d --> ", temp -> data);
-            temp = temp -> link;
-        }
-        printf("%d --> NULL\n", temp -> data);
+        printf("%d --> ", temp -> data);
+        temp = temp -> link;
     }
+    printf("NULL\n");
 }
 
 int main()

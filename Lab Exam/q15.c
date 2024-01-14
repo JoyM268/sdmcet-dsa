@@ -23,14 +23,11 @@ NODE insertAtEnd(NODE first, int ele)
     {
         return temp;
     }
-    else
-    {
-        NODE cur = first;
-        while(cur -> link != NULL)
-            cur = cur -> link;
-        cur -> link = temp;
-        return first;
-    }
+    NODE cur = first;
+    while(cur -> link != NULL)
+        cur = cur -> link;
+    cur -> link = temp;
+    return first;
 }
 
 NODE searchElement(NODE first, int ele)
@@ -62,16 +59,13 @@ void display(NODE first)
         printf("List is empty\n");
         return;
     }
-    else
+    NODE cur = first;
+    while(cur != NULL)
     {
-        NODE cur = first;
-        while(cur != NULL)
-        {
-            printf("%d --> ", cur -> info);
-            cur = cur -> link;
-        }
-        printf("NULL\n");
+        printf("%d --> ", cur -> info);
+        cur = cur -> link;
     }
+    printf("NULL\n");
 }
 
 int main()

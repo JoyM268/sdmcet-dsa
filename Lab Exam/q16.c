@@ -22,14 +22,10 @@ NODE insertAtEnd(NODE first, int ele)
     temp -> info = ele;
     temp -> link = NULL;
     if(first == NULL)
-    {
         return temp;
-    }
     NODE cur = first;
     while(cur -> link != NULL)
-    {
         cur = cur -> link;
-    }
     cur -> link = temp;
     return first;
 }

@@ -14,13 +14,9 @@ void push(int value)
     newNode = (struct node *)malloc(sizeof(struct node));
     newNode -> data = value;
     if(top == NULL)
-    {
         newNode -> link = NULL;
-    }
     else
-    {
         newNode -> link = top;
-    }
     top = newNode;
     printf("Successful insertion\n");
 }

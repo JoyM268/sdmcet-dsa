@@ -30,12 +30,14 @@ NODE insertAtPos(NODE head, int data)
         prev = cur;
         cur = cur -> next;
     }
-    if(cur == NULL || pos < 1)
+    if((cur == NULL && pos != count) || pos < 1)
     {
         printf("Invalid position\n");
         return head;
     }
     temp -> next = cur;
+    if(cur == head)
+        return temp;
     prev -> next = temp;
     return head;
 }

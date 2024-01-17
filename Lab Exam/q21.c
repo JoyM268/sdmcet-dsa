@@ -110,7 +110,7 @@ int main()
                 printf("\n");
                 break;
             case 5:
-                printf("Enter the elemt to be searched: ");
+                printf("Enter the element to be searched: ");
                 scanf("%d", &item);
                 searchElement(root, item);
                 break;

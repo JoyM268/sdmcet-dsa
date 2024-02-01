@@ -34,6 +34,23 @@ void reverseQueue()
     queue[++rear] = item;
 }
 
+//OR
+/*
+void reverseQueue()
+{
+    int stack[SIZE], top = -1, i;
+    for(i = front; i <= rear; i++)
+    {
+        stack[++top] = queue[i];
+    }
+    i = front;
+    while(top != -1)
+    {
+        queue[i] = stack[top--];
+    }
+}
+*/
+
 void display()
 {
     if(rear == -1 || front > rear)
